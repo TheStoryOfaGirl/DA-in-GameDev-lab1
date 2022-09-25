@@ -153,7 +153,7 @@ def optimize(a, b, x, y, Lr):
 Я познакомилась с алгоритмом линейной регрессии, осуществила функции модели, потерь и оптимизации.  Также были проведены эксперименты с различными исходными данными и выявлены зависимости и закономерности.
 
 | Plugin | README |
-| —--— | —--— |
+| ------ | ------ |
 | Dropbox | [plugins/dropbox/README.md][PlDb] |
 | GitHub | [plugins/github/README.md][PlGh] |
 | Google Drive | [plugins/googledrive/README.md][PlGd] |
