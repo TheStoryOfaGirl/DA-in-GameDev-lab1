@@ -43,11 +43,10 @@
 Программа выглядит следующим образом:
 ![1](https://user-images.githubusercontent.com/106344305/192151200-0349ccfc-3b1f-425e-89a5-9f900af6915b.png)
 
-В Unity примерно то же самое. Создала проект. В проекте создала куб и привязала к нему скрипт, который вывод сообщение в консоль:
+В Unity был создан проект. В нем я добавила объект круг и привязала к нему скрипт Hello_World. После выполнения скрипта было выведено сообщение в консоль (снизу первого скриншота).
 
-![2](https://user-images.githubusercontent.com/102030455/191921564-42d7977f-dcea-4d33-89af-73307954b88d.jpg)
-
-![3](https://user-images.githubusercontent.com/102030455/191921586-11f19607-2e9d-41a8-b14f-989d2d7b0684.jpg)
+![2](https://user-images.githubusercontent.com/106344305/192151546-a004c2ca-a081-4380-b01b-0632ec5f1ece.png)
+![3](https://user-images.githubusercontent.com/106344305/192151547-0ba49cea-04f7-4722-882b-523a6a00d2e7.png)
 
 ## Задание 2
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
@@ -56,40 +55,55 @@
 
 ```py
 
+#Import the required modules, numpy for calculation, and Matplotlib for drawing
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = [3, 21, 22, 34, 54, 34, 55, 67, 89, 99]
+# define data, and change list to array
+x = [3,21,22,34,54,34,55,67,89,99]
 x = np.array(x)
-y = [2, 22, 24, 65, 79, 82, 55, 130, 150, 199]
+y = [2,22,24,65,79,82,55,130,150,199]
 y = np.array(y)
-plt.scatter(x, y)
+
+#Show the effect of a scatter plot
+plt.scatter(x,y)
 
 ```
 
-![4](https://user-images.githubusercontent.com/102030455/192087815-1950eac2-d3f0-4d2b-9a5b-16cc50a6a015.jpg)
+![4](https://user-images.githubusercontent.com/106344305/192151632-22da9929-38a1-4095-8404-60666c9d2bdd.png)
+
 
 - Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
 
+Функция модели:
 ```py
 
 def model(a, b, x):
-return a * x + b
+    return a * x + b
+    
+```    
+
+Функция потерь:
+```py
 
 def lossFunction(a, b, x, y):
-num = len(x)
-prediction = model(a, b, x)
-return (0.5 / num) * (np.square(prediction - y)).sum()
+    num = len(x)
+    prediction = model(a, b, x)
+    return (0.5 / num) * (np.square(prediction - y)).sum()
+
+```
+Функция оптимизации:
+```py
 
 def optimize(a, b, x, y, Lr):
-num = len(x)
-prediction = model(a, b, x)
-da = (1.0 / num) * ((prediction - y) * x).sum()
-db = (1.0 / num) * ((prediction - y).sum())
-a -= Lr * da
-b -= Lr * db
-return a, b
-
+    num = len(x)
+    prediction = model(a, b, x)
+    da = (1.0 / num) * ((prediction - y) * x).sum()
+    db = (1.0 / num) * ((prediction - y).sum())
+    a = a - Lr * da
+    b = b - Lr * db
+    return a, b
+    
 ```
 
 ![5](https://user-images.githubusercontent.com/102030455/192087856-c5200bc3-5d63-41f6-9a8c-8d7d5c7f8667.jpg)
