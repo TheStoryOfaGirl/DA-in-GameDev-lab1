@@ -119,7 +119,47 @@ public class RollerAgent : Agent
 
 
 ```
-- Объекту «сфера» добавила компоненты Decision Requester, Behavior Parameters, Rigidbody 
+- Объекту «сфера» добавила компоненты Decision Requester, Behavior Parameters, Rigidbody и произвела их настройку.
+
+![5](https://user-images.githubusercontent.com/106344305/197363242-ef8f7069-0a49-4379-b9be-19961d4f6b6e.PNG)
+
+- В корень проекта добавила файл конфигурации нейронной сети: 
+```yaml
+behaviors:
+  RollerBall:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 10
+      buffer_size: 100
+      learning_rate: 3.0e-4
+      beta: 5.0e-4
+      epsilon: 0.2
+      lambd: 0.99
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    max_steps: 500000
+    time_horizon: 64
+    summary_freq: 10000
+```
+- Запустила работу ml-агента:
+
+![7](https://user-images.githubusercontent.com/106344305/197363365-b7e68d76-91be-4d2a-af80-bc0e6b10375b.PNG)
+![8](https://user-images.githubusercontent.com/106344305/197363367-1e57d5c4-2790-43c9-bf3a-804a8ee406a0.PNG)
+
+- Сделала 3, 9, 27 копий модели «Плоскость-Сфера-Куб», запустила симуляцию сцены и проследила за результатом обучения модели.
+
+![9](https://user-images.githubusercontent.com/106344305/197363416-4c87a6f9-8f32-4b06-9b1d-7e5a0688fa19.PNG)
+![10](https://user-images.githubusercontent.com/106344305/197363417-427a0c35-beaf-4be6-9dde-08cc22c501db.PNG)
+![11](https://user-images.githubusercontent.com/106344305/197363420-a5ca17b8-483a-4f9d-b0c3-ae9a0be8576c.PNG)
+
 
 ## Задание 2
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
