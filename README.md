@@ -39,41 +39,94 @@
 
 ## Задание 1
 ### Реализовать систему машинного обучения в связке Python - Google-Sheets – Unity. При выполнении задания можно использовать видео-материалы и исходные данные, предоставленные преподавателями курса.
-#### Создала новый пустой 3D проект на Unity.
-#### Скачала папку с ML агентом. В созданный проект добавила ML Agent, выбрав Window - Package Manager - Add Package from disk. Последовательно добавила .json – файлы:
+- Создала новый пустой 3D проект на Unity.
+- Скачала папку с ML агентом. В созданный проект добавила ML Agent, выбрав Window - Package Manager - Add Package from disk. Последовательно добавила .json – файлы:
 
 ![13](https://user-images.githubusercontent.com/106344305/197362879-68eb8e6f-8bc8-4413-8a02-6c6a52aea588.PNG)
 
-#### Во вкладке с компонентами (Components) внутри Unity появилась строка ML Agent.
-#### Далее запустила Anaconda Prompt для возможности запуска команд через консоль.
-#### Далее написала необходимые команды для создания и активации нового ML-агента, а также для скачивания необходимых библиотек:
+- Во вкладке с компонентами (Components) внутри Unity появилась строка ML Agent.
+- Далее запустила Anaconda Prompt для возможности запуска команд через консоль.
+- Далее написала необходимые команды для создания и активации нового ML-агента, а также для скачивания необходимых библиотек:
 
 ![1](https://user-images.githubusercontent.com/106344305/197362937-aa50af1d-b768-4f85-8fd2-682e7dca308c.PNG)
 ![2](https://user-images.githubusercontent.com/106344305/197362938-141d3314-5fb5-4973-94cb-0e1abcf5b759.PNG)
 ![3](https://user-images.githubusercontent.com/106344305/197362941-51c2bf9c-f51d-4cbc-ba49-dfee529c4e13.PNG)
 
+- Создала на сцене плоскость, куб и сферу. Создала C# скрипт-файл и подключила его к сфере:
+
+![4](https://user-images.githubusercontent.com/106344305/197363035-81702a45-0bb4-47b0-82b5-0a6d109c470f.PNG)
+
+Скрипт:
+
+```C#
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+public class RollerAgent : Agent
+{
+    Rigidbody rBody;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rBody = GetComponent<Rigidbody>();
+    }
+
+    public Transform Target;
+    public override void OnEpisodeBegin()
+    {
+        if (this.transform.localPosition.y < 0)
+        {
+            this.rBody.angularVelocity = Vector3.zero;
+            this.rBody.velocity = Vector3.zero;
+            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+        }
+
+        Target.localPosition = new Vector3(Random.value * 8-4, 0.5f, Random.value * 8-4);
+    }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(rBody.velocity.x);
+        sensor.AddObservation(rBody.velocity.z);
+    }
+    public float forceMultiplier = 10;
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+        Vector3 controlSignal = Vector3.zero;
+        controlSignal.x = actionBuffers.ContinuousActions[0];
+        controlSignal.z = actionBuffers.ContinuousActions[1];
+        rBody.AddForce(controlSignal * forceMultiplier);
+
+        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+
+        if(distanceToTarget < 1.42f)
+        {
+            SetReward(1.0f);
+            EndEpisode();
+        }
+        else if (this.transform.localPosition.y < 0)
+        {
+            EndEpisode();
+        }
+    }
+}
+
+
+```
+- Объекту «сфера» добавила компоненты Decision Requester, Behavior Parameters, Rigidbody 
 
 ## Задание 2
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
 Ход работы:
 - Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
 
-```py
 
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
-
-#Show the effect of a scatter plot
-plt.scatter(x,y)
-
-```
 
 ![4](https://user-images.githubusercontent.com/106344305/192151632-22da9929-38a1-4095-8404-60666c9d2bdd.png)
 
