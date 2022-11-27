@@ -60,12 +60,35 @@
 
 ![image](https://user-images.githubusercontent.com/106344305/204130493-bf86293c-0b98-48ab-88c2-559497d0d7c1.png)
 
-Количество эпох обучения зависит от смещения (bias) и веса (weight).
-
-
+- Количество эпох обучения зависит от смещения (bias) и веса (weight).
 
 ## Задание 3
 ### Построить визуальную модель работы перцептрона на сцене Unity.
+- Построила визуальную модель работы перцептрона, реализовав функцию AND. В результате кубики меняют свой цвет в соответствии с выбранной операцией. Черные кубики отвечают за 1, белые - за 0.
+![image](https://user-images.githubusercontent.com/106344305/204132291-dc61489d-45dd-4b62-a079-3056edd890e3.png)
+- Для изменения цвета кубиков согласно операции AND был добавлен представленный ниже скрипт.
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChangeColor : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Renderer>().material.color == Color.black && this.gameObject.GetComponent<Renderer>().material.color == Color.black)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.black;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.black;
+        }
+        else
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
+}
+```
 
 
 ## Выводы
