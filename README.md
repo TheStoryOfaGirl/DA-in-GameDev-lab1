@@ -61,6 +61,13 @@
 
 ![image](https://user-images.githubusercontent.com/106344305/204809956-bee2ffea-99e6-4c63-9e16-5418c2db7445.png)
 
+- Изменила параметр batch_size, задав ему значение 500 (было 1024).
+
+![image](https://user-images.githubusercontent.com/106344305/204811911-a42f881b-83dc-4790-9e4d-54cb0aac006a.png)
+
+- Изменила параметр learning_rate, задав ему значение 2.0e-4 (было 3.0e-4).
+
+![image](https://user-images.githubusercontent.com/106344305/204814033-ec1538cf-1dc2-480f-9a0f-344d456e3217.png)
 
 
 
