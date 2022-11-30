@@ -53,10 +53,14 @@
 ![image](https://user-images.githubusercontent.com/106344305/204788741-e630ffd7-8303-40d8-8693-abd4769c238e.png)
 - Построила графики для оценки результатов обучения в TensorBoard.
 ![image](https://user-images.githubusercontent.com/106344305/204803703-d7b4bafb-45f5-4cfc-906d-bbec0d735750.png)
-- Изменила параметр strength, задав ему значения 0.5 и 5 (было 1).
-![image](https://user-images.githubusercontent.com/106344305/204806395-471bdbc6-94b0-4544-b114-a04a4ef21d91.png)
+- Изменила параметр strength, задав ему значение 5 (было 1).
 
 ![image](https://user-images.githubusercontent.com/106344305/204804341-929d9fbf-e3bc-49e2-8272-4661726b4142.png)
+
+- Изменила параметр gamma, задав ему значение 2 (было 0.99).
+
+![image](https://user-images.githubusercontent.com/106344305/204809956-bee2ffea-99e6-4c63-9e16-5418c2db7445.png)
+
 
 
 
