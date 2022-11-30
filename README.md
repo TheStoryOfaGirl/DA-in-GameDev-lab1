@@ -51,6 +51,9 @@
 ![image](https://user-images.githubusercontent.com/106344305/204788606-3ffbd2d9-ccf8-4d73-bd55-b9f99f164833.png)
 - Результаты обучения модели были успешно сохранены.
 ![image](https://user-images.githubusercontent.com/106344305/204788741-e630ffd7-8303-40d8-8693-abd4769c238e.png)
+- Построила графики для оценки результатов обучения в TensorBoard.
+![image](https://user-images.githubusercontent.com/106344305/204803703-d7b4bafb-45f5-4cfc-906d-bbec0d735750.png)
+
 
 
 
