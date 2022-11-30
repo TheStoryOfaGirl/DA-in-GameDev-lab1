@@ -45,9 +45,11 @@
 - Запустила Anaconda Prompt. Создала и активировала виртуальное пространство. Запустила сцену в Unity и обучение ML-Агента.
 
 ![image](https://user-images.githubusercontent.com/106344305/204784917-95bb790a-3a03-417d-8916-86edfe810bf9.png)
+
+- Осуществилось обучение модели.
 ![image](https://user-images.githubusercontent.com/106344305/204785845-656358bb-8178-44df-9b14-a09838596079.png)
--
 ![image](https://user-images.githubusercontent.com/106344305/204788606-3ffbd2d9-ccf8-4d73-bd55-b9f99f164833.png)
+- Результаты обучения модели были успешно сохранены.
 ![image](https://user-images.githubusercontent.com/106344305/204788741-e630ffd7-8303-40d8-8693-abd4769c238e.png)
 
 
