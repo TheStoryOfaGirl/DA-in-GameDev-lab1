@@ -69,6 +69,9 @@
 
 ![image](https://user-images.githubusercontent.com/106344305/204814033-ec1538cf-1dc2-480f-9a0f-344d456e3217.png)
 
+- Изменила параметр time-horizon, задав ему значение 32 (было 64).
+
+![image](https://user-images.githubusercontent.com/106344305/204816256-4c062519-ca3c-4034-acb2-adfe7f98b7cd.png)
 
 
 
