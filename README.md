@@ -53,6 +53,9 @@
 ![image](https://user-images.githubusercontent.com/106344305/204788741-e630ffd7-8303-40d8-8693-abd4769c238e.png)
 - Построила графики для оценки результатов обучения в TensorBoard.
 ![image](https://user-images.githubusercontent.com/106344305/204803703-d7b4bafb-45f5-4cfc-906d-bbec0d735750.png)
+- Изменила параметр strength, задав ему значения 0.5 и 5 (было 1).
+![image](https://user-images.githubusercontent.com/106344305/204804341-929d9fbf-e3bc-49e2-8272-4661726b4142.png)
+
 
 
 
